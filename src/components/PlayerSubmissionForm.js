@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './PlayerSubmissionForm.css';
 
 const PlayerSubmissionForm = (props) => {
-
+  // generate fields from fields prop
   const genFields = (fields) => {
     let newFields = [];
 
@@ -21,7 +21,7 @@ const PlayerSubmissionForm = (props) => {
 
   return (
     <div className="PlayerSubmissionForm">
-      <h3>Player Submission Form for Player #{props.currentPlayer}</h3>
+      <h3>Player Submission Form for Player #{props.index}</h3>
 
       <form className="PlayerSubmissionForm__form" >
 
@@ -32,7 +32,7 @@ const PlayerSubmissionForm = (props) => {
           }
         </div>
         <div className="PlayerSubmissionForm__submit">
-          <input type="submit" value="Submit Line" className="PlayerSubmissionForm__submit-btn" />
+          <input type="submit" onSubmit={props.sendSubmission} value="Submit Line" className="PlayerSubmissionForm__submit-btn" />
         </div>
       </form>
     </div>
