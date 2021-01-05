@@ -4,28 +4,30 @@ import PropTypes from 'prop-types';
 import './PlayerSubmissionForm.css';
 
 const PlayerSubmissionForm = (props) => {
-  // track state of form data
-
-  const [formData, updateFormData] = useState(defaultFields(props.fields));
-  // detect field value change 
-
-  const onFieldChange = (event) => {
-    const fieldName = event.target.name;
-    const fieldValue = event.target.value;
-  }
 
   // generate default fields from fields prop
   const defaultFields = (fields) => {
     let newFields = {};
       for(const item of fields) {
         if(!typeof(item) === 'string') {
-          newFields[item.key] = item.placeholder;
+          newFields[item.key] = '';
         }
       }
     return newFields
   }
+  // track state of form data
+  const [formData, updateFormData] = useState(defaultFields(props.fields));
 
+ // detect field value change 
+  const onFieldChange = (event) => {
+    const fieldName = event.target.name;
+    const updatedValue = event.target.value;
 
+    const newFormData = {...formData};
+
+    newFormData[fieldName] = updatedValue;
+    updateFormData(newFormData);
+  }
   // generate fields from fields prop
   const genFields = (fields) => {
     let newFields = [];
@@ -39,7 +41,7 @@ const PlayerSubmissionForm = (props) => {
                               placeholder = {item.placeholder} 
                               type = 'text' 
                               onChange = {onFieldChange}
-                              className = 'PlayerSubmissionForm__input--invalid'/>)
+                              className = {formData[item.key] ? '' : 'PlayerSubmissionForm__input--invalid'}/>)
       }
     }
 
