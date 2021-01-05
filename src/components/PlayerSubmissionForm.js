@@ -4,13 +4,27 @@ import PropTypes from 'prop-types';
 import './PlayerSubmissionForm.css';
 
 const PlayerSubmissionForm = (props) => {
+  // track state of form data
 
+  const [formData, updateFormData] = useState(defaultFields(props.fields));
   // detect field value change 
 
   const onFieldChange = (event) => {
     const fieldName = event.target.name;
     const fieldValue = event.target.value;
   }
+
+  // generate default fields from fields prop
+  const defaultFields = (fields) => {
+    let newFields = {};
+      for(const item of fields) {
+        if(!typeof(item) === 'string') {
+          newFields[item.key] = item.placeholder;
+        }
+      }
+    return newFields
+  }
+
 
   // generate fields from fields prop
   const genFields = (fields) => {
