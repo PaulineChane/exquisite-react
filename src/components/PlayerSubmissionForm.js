@@ -49,11 +49,18 @@ const PlayerSubmissionForm = (props) => {
     return newFields
   }
 
+  // call props callback on submission 
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    props.sendSubmission(formData);
+  }
+
   return (
     <div className="PlayerSubmissionForm">
       <h3>Player Submission Form for Player #{props.index}</h3>
 
-      <form className="PlayerSubmissionForm__form" onSubmit = {props.sendSubmission}>
+      <form className="PlayerSubmissionForm__form" onSubmit = {onSubmit}>
 
         <div className="PlayerSubmissionForm__poem-inputs">
           {

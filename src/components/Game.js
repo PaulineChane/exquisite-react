@@ -56,8 +56,9 @@ const Game = () => {
   // updates app on submit
   // updates index to next player
   // converts submission into string and store in allSubmissions
-  const onFormSubmit = (event) => {
-    event.preventDefault();
+  const addSubmission = (submission) => {
+    // prevent browser from refreshing the page 
+
     updatePlayer(currentPlayer + 1);
   }
   // to my knowledge, this resets upon refreshing
@@ -98,7 +99,7 @@ const Game = () => {
 
       <RecentSubmission submission = {allSubmissions.lastItem}/>
 
-      <PlayerSubmissionForm fields = {FIELDS} index = {currentPlayer} sendSubmission={onFormSubmit} isSubmitted = {isSubmitted}/>
+      <PlayerSubmissionForm fields = {FIELDS} index = {currentPlayer} sendSubmission={addSubmission} isSubmitted = {isSubmitted}/>
 
       <FinalPoem submissions = {allSubmissions} isSubmitted = {isSubmitted} revealPoem = {onFinishedPoem}/>
 
