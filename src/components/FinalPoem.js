@@ -9,6 +9,24 @@ const FinalPoem = (props) => {
     return submissions.map((submission)=> <p>{submission}</p>);
   }
 
+  const renderObject = (isSubmitted) => {
+    if(isSubmitted){
+      return(
+        <section className="FinalPoem__poem">
+          <h3>Final Poem</h3>
+            {printSubmissions(props.submissions)}
+        </section>
+            );
+    } else {
+      return (
+        <div className="FinalPoem__reveal-btn-container">
+          <input type="button" onClick = {props.revealPoem} value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" />
+        </div>
+      );
+
+    }
+  }
+
   if(props.isSubmitted){
     return (
       <div className="FinalPoem">
