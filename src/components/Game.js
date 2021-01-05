@@ -54,10 +54,13 @@ const Game = () => {
   }).join(' ');
 
   // updates app on submit
-  const onFormSubmit = () => {
-
+  // updates index to next player
+  // converts submission into string and store in allSubmissions
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+    updatePlayer(currentPlayer + 1);
   }
-
+  // to my knowledge, this resets upon refreshing
   const onFinishedPoem = () => {
     updateSubmittedState(true);
   }
