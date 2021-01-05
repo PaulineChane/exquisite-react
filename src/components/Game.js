@@ -56,9 +56,20 @@ const Game = () => {
   // updates app on submit
   // updates index to next player
   // converts submission into string and store in allSubmissions
-  const addSubmission = (submission) => {
-    // prevent browser from refreshing the page 
+  const addSubmission = (submission, fields) => {
+    let newSubmission = [...allSubmissions];
+    let newLine = '';
 
+    for(const field of fields) {
+      if(typeof(field) === 'string') {
+        newLine += field === '.' ? field : field + ' ';
+      } else {
+        newLine += `${!submission[field.key] ? '' : submission[field.key]} `;
+      }
+    }
+
+    newSubmission.push(newLine);
+    updateSubmissions(newSubmission);
     updatePlayer(currentPlayer + 1);
   }
   // to my knowledge, this resets upon refreshing
@@ -97,7 +108,7 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission submission = {allSubmissions.lastItem}/>
+      <RecentSubmission submission = {allSubmissions ? allSubmissions[allSubmissions.length - 1] : ''}/>
 
       <PlayerSubmissionForm fields = {FIELDS} index = {currentPlayer} sendSubmission={addSubmission} isSubmitted = {isSubmitted}/>
 

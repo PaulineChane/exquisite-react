@@ -52,8 +52,12 @@ const PlayerSubmissionForm = (props) => {
   // call props callback on submission 
 
   const onSubmit = (event) => {
+    // prevent browser from refreshing the page 
     event.preventDefault();
-    props.sendSubmission(formData);
+    // callback
+    props.sendSubmission(formData, props.fields);
+    // reset to default
+    updateFormData(defaultFields(props.fields));
   }
 
   return (
