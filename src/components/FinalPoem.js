@@ -6,7 +6,7 @@ const FinalPoem = (props) => {
   // to print all submissions when poem is finished
   const printSubmissions = (submissions) => {
 
-    return submissions.map((submission)=> <p>{submission}</p>);
+    return submissions.map((submission, index)=> <p key={index}>{submission}</p>);
   }
 
   const renderObject = (isSubmitted) => {

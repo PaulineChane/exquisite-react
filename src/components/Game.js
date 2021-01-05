@@ -72,7 +72,7 @@ const Game = () => {
   }
   
   const renderRecentSubmission = (allSubmissions) => {
-    if (allSubmissions.length !== 0) {
+    if (!isSubmitted && allSubmissions.length !== 0) {
       return(<RecentSubmission submission = {allSubmissions[allSubmissions.length - 1]}/>);
     } 
   }
