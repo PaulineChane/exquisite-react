@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './FinalPoem.css';
 
 const FinalPoem = (props) => {
+  // to print all submissions when poem is finished
   const printSubmissions = (submissions) => {
     let submissionsFormatted = [];
     for(const line of submissions) {
@@ -17,7 +18,7 @@ const FinalPoem = (props) => {
       <div className="FinalPoem">
       <section className="FinalPoem__poem">
         <h3>Final Poem</h3>
-        {props.revealPoem(props.submissions)}
+        {printSubmissions(props.submissions)}
       </section>
     </div>
 
@@ -26,7 +27,7 @@ const FinalPoem = (props) => {
   return (
     <div className="FinalPoem">
       <div className="FinalPoem__reveal-btn-container">
-        <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" />
+        <input type="button" onClick = {props.revealPoem} value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" />
       </div>
     </div>
   );

@@ -19,7 +19,6 @@ const PlayerSubmissionForm = (props) => {
     return newFields
   }
 
-
   return (
     <div className="PlayerSubmissionForm">
       <h3>Player Submission Form for Player #{props.currentPlayer}</h3>
