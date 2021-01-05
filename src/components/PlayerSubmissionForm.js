@@ -10,6 +10,7 @@ const PlayerSubmissionForm = (props) => {
     let newFields = {};
       for(const item of fields) {
         if(!typeof(item) === 'string') {
+          // here, we aren't checking against default, so we can submit placeholders if we type it in
           newFields[item.key] = '';
         }
       }
