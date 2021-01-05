@@ -23,7 +23,7 @@ const PlayerSubmissionForm = (props) => {
     <div className="PlayerSubmissionForm">
       <h3>Player Submission Form for Player #{props.index}</h3>
 
-      <form className="PlayerSubmissionForm__form" >
+      <form className="PlayerSubmissionForm__form" onSubmit = {props.sendSubmission}>
 
         <div className="PlayerSubmissionForm__poem-inputs">
           {
@@ -32,7 +32,7 @@ const PlayerSubmissionForm = (props) => {
           }
         </div>
         <div className="PlayerSubmissionForm__submit">
-          <input type="submit" onSubmit={props.sendSubmission} value="Submit Line" className="PlayerSubmissionForm__submit-btn" />
+          <input type="submit" value="Submit Line" className="PlayerSubmissionForm__submit-btn" />
         </div>
       </form>
     </div>

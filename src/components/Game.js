@@ -62,7 +62,7 @@ const Game = () => {
     updateSubmittedState(true);
   }
   
-
+  // how to make this more DRY??? 
   if(isSubmitted) {
     return (
       <div className="Game">
