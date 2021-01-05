@@ -26,23 +26,9 @@ const FinalPoem = (props) => {
 
     }
   }
-
-  if(props.isSubmitted){
-    return (
-      <div className="FinalPoem">
-      <section className="FinalPoem__poem">
-        <h3>Final Poem</h3>
-        {printSubmissions(props.submissions)}
-      </section>
-    </div>
-
-    )
-  }
   return (
     <div className="FinalPoem">
-      <div className="FinalPoem__reveal-btn-container">
-        <input type="button" onClick = {props.revealPoem} value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" />
-      </div>
+      {renderObject(props.isSubmitted)}
     </div>
   );
 }
