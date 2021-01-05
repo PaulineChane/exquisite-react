@@ -58,15 +58,9 @@ const Game = () => {
   // converts submission into string and store in allSubmissions
   const addSubmission = (submission, fields) => {
     let newSubmission = [...allSubmissions];
-    let newLine = '';
-
-    for(const field of fields) {
-      if(!field.key) {
-        newLine += field === '.' ? field : field + ' ';
-      } else {
-        newLine += `${!submission[field.key] ? '' : submission[field.key]} `;
-      }
-    }
+    let newLine = fields.map((field) => {
+      return field.key ? submission[field.key] : field;
+    }).join(' ');
 
     newSubmission.push(newLine);
     updateSubmissions(newSubmission);
@@ -110,7 +104,7 @@ const Game = () => {
 
       <RecentSubmission submission = {allSubmissions ? allSubmissions[allSubmissions.length - 1] : ''}/>
 
-      <PlayerSubmissionForm fields = {FIELDS} index = {currentPlayer} sendSubmission={addSubmission} isSubmitted = {isSubmitted}/>
+      <PlayerSubmissionForm fields = {FIELDS} index = {currentPlayer} sendSubmission={addSubmission}/>
 
       <FinalPoem submissions = {allSubmissions} isSubmitted = {isSubmitted} revealPoem = {onFinishedPoem}/>
 

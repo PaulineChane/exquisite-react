@@ -68,7 +68,6 @@ const PlayerSubmissionForm = (props) => {
 
         <div className="PlayerSubmissionForm__poem-inputs">
           {
-            // Put your form inputs here... We've put in one below as an example
             genFields(props.fields)
           }
         </div>
