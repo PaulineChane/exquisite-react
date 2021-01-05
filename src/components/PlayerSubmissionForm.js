@@ -4,6 +4,14 @@ import PropTypes from 'prop-types';
 import './PlayerSubmissionForm.css';
 
 const PlayerSubmissionForm = (props) => {
+
+  // detect field value change 
+
+  const onFieldChange = (event) => {
+    const fieldName = event.target.name;
+    const fieldValue = event.target.value;
+  }
+
   // generate fields from fields prop
   const genFields = (fields) => {
     let newFields = [];
@@ -12,7 +20,12 @@ const PlayerSubmissionForm = (props) => {
       if (typeof(item) === 'string') {
         newFields.push(item);
       } else {
-        newFields.push(<input placeholder = {item.placeholder} type = "text" />)
+        newFields.push(<input id = {item.key} 
+                              name = {item.key} 
+                              placeholder = {item.placeholder} 
+                              type = 'text' 
+                              onChange = {onFieldChange}
+                              className = 'PlayerSubmissionForm__input--invalid'/>)
       }
     }
 
