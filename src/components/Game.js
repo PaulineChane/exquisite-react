@@ -61,7 +61,7 @@ const Game = () => {
     let newLine = '';
 
     for(const field of fields) {
-      if(typeof(field) === 'string') {
+      if(!field.key) {
         newLine += field === '.' ? field : field + ' ';
       } else {
         newLine += `${!submission[field.key] ? '' : submission[field.key]} `;

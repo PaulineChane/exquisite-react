@@ -5,12 +5,8 @@ import './FinalPoem.css';
 const FinalPoem = (props) => {
   // to print all submissions when poem is finished
   const printSubmissions = (submissions) => {
-    let submissionsFormatted = [];
-    for(const line of submissions) {
-      submissionsFormatted.push(`<p>${line}</p>`);
-    }
 
-    return submissionsFormatted;
+    return submissions.map((submission)=> <p>{submission}</p>);
   }
 
   if(props.isSubmitted){

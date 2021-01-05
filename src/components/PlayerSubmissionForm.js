@@ -7,14 +7,14 @@ const PlayerSubmissionForm = (props) => {
 
   // generate default fields from fields prop
   const defaultFields = (fields) => {
-    let newFields = {};
+    let baseFields = {};
       for(const item of fields) {
-        if(!typeof(item) === 'string') {
+        if(item.key) {
           // here, we aren't checking against default, so we can submit placeholders if we type it in
-          newFields[item.key] = '';
+          baseFields[item.key] = '';
         }
       }
-    return newFields
+    return baseFields;
   }
   // track state of form data
   const [formData, updateFormData] = useState(defaultFields(props.fields));
@@ -34,7 +34,7 @@ const PlayerSubmissionForm = (props) => {
     let newFields = [];
 
     for(const item of fields) {
-      if (typeof(item) === 'string') {
+      if (!item.key) {
         newFields.push(item);
       } else {
         newFields.push(<input id = {item.key} 
@@ -46,7 +46,7 @@ const PlayerSubmissionForm = (props) => {
       }
     }
 
-    return newFields
+    return newFields;
   }
 
   // call props callback on submission 
