@@ -37,7 +37,8 @@ const PlayerSubmissionForm = (props) => {
       if (!item.key) {
         newFields.push(item);
       } else {
-        newFields.push(<input id = {item.key} 
+        newFields.push(<input key = {item.key}
+                              id = {item.key} 
                               name = {item.key} 
                               placeholder = {item.placeholder} 
                               type = 'text' 
@@ -52,12 +53,14 @@ const PlayerSubmissionForm = (props) => {
   // call props callback on submission 
 
   const onSubmit = (event) => {
+    console.log(props.fields);
     // prevent browser from refreshing the page 
     event.preventDefault();
     // callback
     props.sendSubmission(formData, props.fields);
     // reset to default
     updateFormData(defaultFields(props.fields));
+    console.log(props.fields);
   }
 
   return (
