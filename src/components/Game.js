@@ -70,7 +70,7 @@ const Game = () => {
   const onFinishedPoem = () => {
     updateSubmittedState(true);
   }
-  
+
   // how to make this more DRY??? 
   if(isSubmitted) {
     return (

@@ -30,7 +30,7 @@ const PlayerSubmissionForm = (props) => {
     updateFormData(newFormData);
   }
   // generate fields from fields prop
-  const genFields = (fields) => {
+  const genFields = (fields, formData) => {
     let newFields = [];
 
     for(const item of fields) {
@@ -41,6 +41,7 @@ const PlayerSubmissionForm = (props) => {
                               id = {item.key} 
                               name = {item.key} 
                               placeholder = {item.placeholder} 
+                              value = {!formData[item.key] ? '' : formData[item.key]}
                               type = 'text' 
                               onChange = {onFieldChange}
                               className = {formData[item.key] ? '' : 'PlayerSubmissionForm__input--invalid'}/>)
@@ -53,14 +54,12 @@ const PlayerSubmissionForm = (props) => {
   // call props callback on submission 
 
   const onSubmit = (event) => {
-    console.log(props.fields);
     // prevent browser from refreshing the page 
     event.preventDefault();
     // callback
     props.sendSubmission(formData, props.fields);
     // reset to default
     updateFormData(defaultFields(props.fields));
-    console.log(props.fields);
   }
 
   return (
@@ -71,7 +70,7 @@ const PlayerSubmissionForm = (props) => {
 
         <div className="PlayerSubmissionForm__poem-inputs">
           {
-            genFields(props.fields)
+            genFields(props.fields, formData)
           }
         </div>
         <div className="PlayerSubmissionForm__submit">
